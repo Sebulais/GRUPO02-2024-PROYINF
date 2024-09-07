@@ -15,4 +15,6 @@ Puede revisar la wiki del proyecto a través del siguiente [enlace](https://gith
 ## Videos
 * [Presentación del cliente](https://www.youtube.com/watch?v=abJau21SDIk&feature=youtu.be).
 ## Aspectos técnicos relevantes
-Aquí irian los aspectos técnicos relevantes del proyecto.
+* Framework adecuado para las necesidades del cliente
+* Servidor dedicado para permitir la subida y bajada de PDFs
+* Inteligencia Artificial para realizar la conversión de PDFs (y los conocimientos asociados que se requieren)
