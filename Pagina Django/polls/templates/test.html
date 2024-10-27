@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+<!doctype html>
+<html>
+
+<body>
+    {% block content %}
+
+
+    <!-- Banner -->
+    <section class="banner">
+        <div class="container">
+
+            <h1>Encuentra en la Fundación para la Innovación Agraria</h1>
+            <p>El apoyo que necesitas para innovar</p>
+        </div>
+    </section>
+
+    <!-- Barra de búsqueda -->
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Buscar...">
+                    <button class="btn btn-primary">Buscar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección de noticias -->
+    <section class="news-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Noticias</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card news-item">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5opiAanGy6wk-GgPyFYdfpxPkvP5ExOo5nw&s" class="card-img-top"
+                            alt="Noticia 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Noticia 1</h5>
+                            <p class="card-text">Resumen de la noticia 1</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card news-item">
+                        <img src="https://img.freepik.com/fotos-premium/analisis-interacciones-alelopaticas-agricultura-generativa_1198295-127369.jpg"
+                            class="card-img-top" alt="Noticia 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Noticia 2</h5>
+                            <p class="card-text">Resumen</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card news-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/TomatalesEnRengo.jpg/1200px-TomatalesEnRengo.jpg"
+                            class="card-img-top" alt="Noticia 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Noticia 3</h5>
+                            <p class="card-text">Resumen</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endblock %}
+</body>
+
+</html>
