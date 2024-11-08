@@ -12,6 +12,12 @@ def home(request):
 def noticias(request):
     return render(request, "home.html")
 
+def boletines(request):
+    return render(request, "boletines.html")
+
+def generarBoletines(request):
+    return render(request, "generarBoletines.html")
+
 def programas(request):
     return HttpResponse("Esto fue un accidente de pancha")
 

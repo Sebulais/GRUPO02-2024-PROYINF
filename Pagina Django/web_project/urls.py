@@ -17,16 +17,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.contrib.auth.views import LoginView, LogoutView
-from polls.views import home, index, noticias, programas, convocatorias, contacto
+from polls.views import home, index, boletines, noticias, programas, convocatorias, contacto, generarBoletines
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', home, name='home'),
     path('index/', index, name='index'),
+    path('boletines/', boletines, name='boletines'),
     path('noticias/', noticias, name='noticias'),
     path('programas/', programas, name='programas'),
     path('convocatorias/', convocatorias, name='convactorias'),
     path('contacto/', contacto, name='contacto'),
+    path('generarBoletines/', generarBoletines, name='generarBoletines'),
+
     
 ]

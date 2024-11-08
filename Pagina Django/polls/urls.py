@@ -5,9 +5,11 @@ from . import views
 urlpatterns = [
     path("", views.index, name="index"),
     path("", views.home, name="home"),
+    path("", views.boletines, name="boletines"),
     path("", views.noticias, name="noticias"),
     path("",views.programas, name= "programas"),
     path("", views.convocatorias, name="convocatorias"),
     path("", views.contacto, name="contacto"),
+    path("", views.generarBoletines, name="generarBoletines"),
 ]
 
