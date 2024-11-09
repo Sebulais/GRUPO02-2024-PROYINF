@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat de Ayuda</title>
+    <style>
+        #chat-container {
+            width: 300px;
+            height: 400px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            background-color: #fff;
+        }
+
+        #chat-box {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        #messages {
+            flex-grow: 1;
+            overflow-y: auto;
+            margin-bottom: 10px;
+        }
+
+        #user-input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    {% block content %}
+    <style>
+        .banner {
+            background-image: url("https://opia.fia.cl/601/channels-501_bg_encabezado_opia22.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            padding: 2.5em; /* Reduced vertical padding */
+            text-align: left;
+        }
+    </style>
+    <section class="banner">
+        <div class="container">
+
+            <h1>Chat de Retroalimentación con la IA</h1>
+
+        </div>
+    </section>
+    <section class="news-section py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="container">
+                    <h2 class="text-left mb-5" style="font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 1.4em; border-bottom: 1px solid #c0c0c0; padding-bottom: 10px;">(Prototipo)</h2>
+                    <div class="row g-4 justify-content-center">
+                        <div class="col-md-4">
+                            <div class="card news-item">
+                                <div id="chat-container">
+                                    <div id="chat-box">
+                                        <div id="messages"></div>
+                                        <input type="text" id="user-input" placeholder="Escribe tu pregunta aquí...">
+                                        <button onclick="sendMessage()">Enviar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        let messageCount = 0;  // Contador para llevar el control del número de mensajes enviados
+
+        function sendMessage() {
+            const userMessage = document.getElementById("user-input").value;
+            if (userMessage.trim() === "") return; // Evitar enviar mensajes vacíos
+            document.getElementById("messages").innerHTML += `<p><strong>Usuario:</strong> ${userMessage}</p>`;
+            document.getElementById("user-input").value = "";
+
+            messageCount++;  // Aumentamos el contador de mensajes
+
+            // Condición para las respuestas de la IA según el mensaje que se está enviando
+            let botReply = "";
+            if (messageCount === 1) {
+                botReply = "Hola ¿En qué puedo ayudarte?";  // Respuesta inicial
+            } else if (messageCount === 2) {
+                botReply = "Entendido, intentaré que esa sugerencia se aplique correctamente con lo que me has pedido";  // Segunda respuesta
+            } else {
+                botReply = "Gracias por tu mensaje. Estoy procesando la información.";  // Respuesta general para otros mensajes
+            }
+
+            // Mostrar la respuesta del bot en el chat
+            document.getElementById("messages").innerHTML += `<p><strong>IA:</strong> ${botReply}</p>`;
+        }
+    </script>
+    {% endblock %}
+</body>
+</html>
