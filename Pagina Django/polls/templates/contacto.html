@@ -1,11 +1,7 @@
 {% extends 'base.html' %}
 <!DOCTYPE html>
-
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat de Ayuda</title>
 </head>
 <body>
     {% block content %}
@@ -16,7 +12,7 @@
             background-position: center;
             background-repeat: no-repeat;
             color: white;
-            padding: 2.5em; /* Reduced vertical padding */
+            padding: 2.5em;
             text-align: left;
         }
         .message {
@@ -34,68 +30,111 @@
             <h1>Chat de Retroalimentación con la IA</h1>
         </div>
     </section>
+
     <section class="news-section py-5">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="container">
                     <div class="chat-container" id="chat-container">
-                        <div class="chat-box" id="messages"></div>
+                        <div class="chat-box" id="messages">
+                            <!-- Aquí se mostrarán los mensajes -->
+                            <p id="responseText" class="message bot">¡Hola! Soy un chatbot de retroalimentación. ¿En qué puedo ayudarte hoy?</p>
+                        </div>
                         <div class="chat-input">
-                            <input type="text" id="user-input" placeholder="Escribe tu pregunta aquí..." onkeydown="handleKeyDown(event)" />
-                            <button class="send-button" onclick="sendMessage()">Enviar</button>
+                            <input type="text" id="inputText" placeholder="Escribe tu pregunta aquí..." onkeydown="handleKeyDown(event)" />
+                            <button class="send-button" id="generateButton" onclick="sendMessage()">Enviar</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
-    <script>
-    let messageCount = 0;
-    const bannedWords = ["mierda", "venecos", "hueon", "saco huea", "ctm", "concha", "negro", "weko", "pico",]; // Lista de palabras ofensivas
-    
-    function sendMessage() {
-        const userMessage = document.getElementById("user-input").value.trim();
-        if (userMessage === "") return;
 
-        // Verificar si contiene palabras ofensivas
-        const containsBannedWord = bannedWords.some(word => userMessage.toLowerCase().includes(word));
-        if (containsBannedWord) {
-            alert("El mensaje contiene palabras inapropiadas. Por favor, reformula tu mensaje.");
-            document.getElementById("user-input").value = "";
-            return;
+    <script type="importmap">
+        {
+          "imports": {
+            "@google/generative-ai": "https://esm.run/@google/generative-ai"
+          }
         }
-    
-        // Agregar mensaje del usuario
-        const messagesContainer = document.getElementById("messages");
-        messagesContainer.innerHTML += `<div class="message user">${userMessage}</div>`;
-        document.getElementById("user-input").value = "";
-    
-        messageCount++;
-    
-        // Crear respuesta de la IA
-        let botReply = "";
-        if (messageCount === 1) {
-            botReply = "Hola ¿En qué puedo ayudarte?";
-        } else if (messageCount === 2) {
-            botReply = "Entendido, intentaré que esa sugerencia se aplique correctamente con lo que me has pedido.";
-        } else {
-            botReply = "Gracias por tu mensaje. Estoy procesando la información.";
+    </script>
+    <script type="module">
+        import { GoogleGenerativeAI } from "@google/generative-ai";
+
+        // Reemplaza 'YOUR_API_KEY' con tu clave de API real
+        const API_KEY = 'AIzaSyDKxJQqD_FwpLN5h_bf0ucW19k247pU0jI';
+        const genAI = new GoogleGenerativeAI(API_KEY);
+
+        // Lista de palabras prohibidas
+        const forbiddenWords = ["prohibido", "mala palabra", "ofensivo"];
+
+        // Función para verificar si el texto contiene palabras prohibidas
+        function containsForbiddenWords(text) {
+            const lowerText = text.toLowerCase();
+            return forbiddenWords.some(word => lowerText.includes(word));
         }
-    
-        // Agregar mensaje de la IA
-        setTimeout(() => {
-            messagesContainer.innerHTML += `<div class="message bot">${botReply}</div>`;
-            messagesContainer.scrollTop = messagesContainer.scrollHeight; // Desplazarse al final
-        }, 500);
-    }
-    
-    function handleKeyDown(event) {
-        if (event.key === "Enter") {
-            event.preventDefault(); // Evita el salto de línea
-            sendMessage();
+
+        // Función para enviar mensajes
+        async function sendMessage() {
+            const inputElement = document.getElementById('inputText');
+            const messagesContainer = document.getElementById('messages');
+            const userMessage = inputElement.value.trim();
+
+            if (!userMessage) {
+                return; // No envíes mensajes vacíos
+            }
+
+            // Verificar si el mensaje contiene palabras prohibidas
+            if (containsForbiddenWords(userMessage)) {
+                alert("Tu mensaje contiene palabras no permitidas. Por favor, intenta nuevamente.");
+                inputElement.value = ''; // Limpiar el campo de entrada
+                return;
+            }
+
+            // Agrega el mensaje del usuario al chat
+            const userMessageElement = document.createElement('p');
+            userMessageElement.classList.add('message', 'user');
+            userMessageElement.textContent = userMessage;
+            messagesContainer.appendChild(userMessageElement);
+
+            // Limpia la entrada de texto
+            inputElement.value = '';
+
+            try {
+                // Obtén respuesta del bot
+                const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro-latest" });
+                const prompt = userMessage;
+                const result = await model.generateContent(prompt);
+                const response = await result.response.text();
+
+                // Agrega la respuesta del bot al chat
+                const botMessageElement = document.createElement('p');
+                botMessageElement.classList.add('message', 'bot');
+                botMessageElement.textContent = response;
+                messagesContainer.appendChild(botMessageElement);
+
+            } catch (error) {
+                console.error('Error al generar contenido:', error);
+
+                // Agrega un mensaje de error al chat
+                const errorMessageElement = document.createElement('p');
+                errorMessageElement.classList.add('message', 'bot');
+                errorMessageElement.textContent = "Hubo un error al procesar tu mensaje. Intenta nuevamente.";
+                messagesContainer.appendChild(errorMessageElement);
+            }
+
+            // Mantén el scroll en el fondo
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
         }
-    }
+
+        // Manejo del evento Enter
+        function handleKeyDown(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        // Event listener para el botón de envío
+        document.getElementById('generateButton').addEventListener('click', sendMessage);
     </script>
     
     {% endblock %}
