@@ -1,3 +1,14 @@
+# Grupo 13 
+* Sebastián Marcelo Canales Peña
+  - Rol: 202273640-2
+* Juan José García Bustamente
+  - Rol: 202273595-3
+* Giselle Andrea Gómez Miranda
+  - Rol: 202273591-0
+* Diego Alejandro Muñoz Carrillo
+  - Rol: 202273578-3
+
+# Grupo Anterior del proyecto 2024
 # Grupo 2 - INF236
 ### Integrantes del Grupo
 * Sebastián Marcelo Canales Peña
