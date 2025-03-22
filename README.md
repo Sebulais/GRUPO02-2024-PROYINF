@@ -19,9 +19,9 @@ Puede revisar la wiki del proyecto a través del siguiente [enlace](https://gith
 * Servidor dedicado para permitir la subida y bajada de PDFs
 * Inteligencia Artificial para realizar la conversión de PDFs (y los conocimientos asociados que se requieren)
 
+## Proyecto Base
 
 El proyecto base a utilizar es del Grupo 2 del 2024-2, he aqui la lista de los integrantes anteriores con su respectivo tutor:
-
 * Sebastián Marcelo Canales Peña
   - Rol: 202273640-2
 * Juan José García Bustamente
