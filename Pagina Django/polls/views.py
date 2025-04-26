@@ -7,6 +7,24 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import os
 import google.generativeai as genai
+from .utils import traducir_texto
+
+def home(request):
+    contenido = {
+        'titulo': 'Bienvenido a la biblioteca local',
+        'noticias': [
+            'El servidor fue actualizado exitosamente.',
+            'Nuevas características han sido añadidas.',
+        ]
+    }
+
+    idioma_navegador = request.LANGUAGE_CODE
+
+    if idioma_navegador != 'es':
+        contenido['titulo'] = traducir_texto(contenido['titulo'], idioma_destino=idioma_navegador)
+        contenido['noticias'] = [traducir_texto(nota, idioma_destino=idioma_navegador) for nota in contenido['noticias']]
+
+    return render(request, 'home.html', {'contenido': contenido})
 
 # Configurar la API de Google Generative AI
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
