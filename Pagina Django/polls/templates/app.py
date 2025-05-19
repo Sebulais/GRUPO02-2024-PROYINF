@@ -39,3 +39,4 @@ while True:
 
     history.append("role": "user", "parts": [user_input])
     history.append("role": "system", "parts": [model_response])
+

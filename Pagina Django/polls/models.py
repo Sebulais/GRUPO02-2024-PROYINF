@@ -19,10 +19,13 @@ class Usuario(models.Model):
     def __str__(self):
         return f"{self.email} ({self.rol})"
 
+
 class InformacionCientifica(models.Model):
     titulo = models.CharField(max_length=255)
     contenido = models.TextField()
     es_relevante = models.BooleanField(default=False)
+    def __str__(self):
+        return self.titulo
 
 class Boletin(models.Model):
     titulo = models.CharField(max_length=255)

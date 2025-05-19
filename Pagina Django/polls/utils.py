@@ -27,7 +27,7 @@ def traducir_texto(texto, idioma_destino='en'):
 
     return response.translations[0].translated_text
 
-
+#Logica de Correo
 def notificar(evento, objeto):
     if evento == 'nueva_info_relevante':
         asunto = "Nueva información científica relevante"

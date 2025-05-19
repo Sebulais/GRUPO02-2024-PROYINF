@@ -10,6 +10,6 @@ class APITestCase(TestCase):
         self.client = Client()
         self.boletin = Boletin.objects.create(titulo="Boletín 1", estado="Borrador")
 
-
+# informarcion revelante true,
 # Ejecutar casos pruebas en la terminal con este comando: python manage.py test.
 

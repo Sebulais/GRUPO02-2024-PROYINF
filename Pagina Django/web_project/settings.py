@@ -125,10 +125,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 GOOGLE_TRANSLATE_API_KEY = ''
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'tu_correo@gmail.com'  # Reemplazar con tu correo Gmail
-EMAIL_HOST_PASSWORD = 'tu_contraseña'  # Reemplazar con la contraseña de tu Gmail
-DEFAULT_FROM_EMAIL = 'tu_correo@gmail.com'  # Reemplazar con tu correo Gmail
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
