@@ -27,6 +27,8 @@ class TestSignals(unittest.TestCase):
         self.boletin_en_proceso = Boletin(estado='En proceso')
         self.info_relevante = InformacionCientifica(es_relevante=True)
         self.info_no_relevante = InformacionCientifica(es_relevante=False)
+        self.traduccion_aleman = Traduccion(estado='Nachrichtenbulletin')
+        slef.traduccion_ingles = Traduccion(estado='News Bulletin')
 
     def tearDown(self):
         """Limpieza después de cada test"""
@@ -91,7 +93,7 @@ class TestSignals(unittest.TestCase):
             self.fail("notificar fue llamado cuando no debía")
     
             
-    def test_traduccion_a_ingles(self):
+    def test_traduccion_a_ingles(self, mock_notificar):
         print("\n[TEST] test_traduccion_a_ingles")
         activate('en')
         texto_original = _("Boletín de Noticias")
@@ -103,7 +105,7 @@ class TestSignals(unittest.TestCase):
             print(f"Output inesperado: '{texto_original}' ≠ 'News Bulletin'")
             raise
 
-    def test_traduccion_a_aleman(self):
+    def test_traduccion_a_aleman(self, mock_notificar):
         print("\n[TEST] test_traduccion_a_aleman")
         activate('de')
         texto_original = _("Boletín de Noticias")
