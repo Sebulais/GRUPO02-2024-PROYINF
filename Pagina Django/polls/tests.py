@@ -27,8 +27,8 @@ class TestSignals(unittest.TestCase):
         self.boletin_en_proceso = Boletin(estado='En proceso')
         self.info_relevante = InformacionCientifica(es_relevante=True)
         self.info_no_relevante = InformacionCientifica(es_relevante=False)
-        self.traduccion_aleman = Traduccion(estado='Nachrichtenbulletin')
-        slef.traduccion_ingles = Traduccion(estado='News Bulletin')
+        self.traduccion_aleman = Boletin(titulo='Nachrichtenbulletin')
+        slef.traduccion_ingles = Boletin(titulo='News Bulletin')
 
     def tearDown(self):
         """Limpieza después de cada test"""
@@ -92,20 +92,35 @@ class TestSignals(unittest.TestCase):
             print("Output inesperado: notificar() fue llamado")
             self.fail("notificar fue llamado cuando no debía")
     
-            
-    def test_traduccion_a_ingles(self, mock_notificar):
+    @patch('polls.signals.notificar')        
+    def test_traduccion_a_ingles_called(self, mock_notificar):
         print("\n[TEST] test_traduccion_a_ingles")
         activate('en')
         texto_original = _("Boletín de Noticias")
+        traduccion = self._guardar_instancia(self.traduccion_ingles)
         print(f"Input: idioma = 'en', texto original = 'Boletín de Noticias'")
         try:
+            mock_notificar.assert_called_once_with('boletin_traducido', traduccion)
             self.assertEqual(texto_original, "News Bulletin")
-            print("Output esperado: 'News Bulletin' → Traducción correcta")
+            print("Output esperado: notificar('boletin_traducido', traduccion) → Llamado correctamente")
         except AssertionError as e:
             print(f"Output inesperado: '{texto_original}' ≠ 'News Bulletin'")
             raise
 
-    def test_traduccion_a_aleman(self, mock_notificar):
+    
+    @patch('polls.signals.notificar')  
+    def test_traduccion_a_ingles_not_called(self, mock_notificar):
+        print("\n[TEST] test_traduccion_a_ingles_not_called")
+        print(f"Input: idioma = 'en', texto original = 'Boletín de Noticias'")
+        self._guardar_instancia(self.traduccion_ingles)
+        if not mock_notificar.called:
+            print("Output esperado: notificar() → No llamado")
+        else:
+            print("Output inesperado: notificar() fue llamado")
+            self.fail("notificar fue llamado cuando no debía")
+
+    @patch('polls.signals.notificar')
+    def test_traduccion_a_aleman_called(self, mock_notificar):
         print("\n[TEST] test_traduccion_a_aleman")
         activate('de')
         texto_original = _("Boletín de Noticias")
@@ -116,6 +131,35 @@ class TestSignals(unittest.TestCase):
         except AssertionError as e:
             print(f"Output inesperado: '{texto_original}' ≠ 'Nachrichtenbulletin'")
             raise
+
+     @patch('polls.signals.notificar')        
+    def test_traduccion_a_aleman_called(self, mock_notificar):
+       print("\n[TEST] test_traduccion_a_aleman")
+        activate('de')
+        texto_original = _("Boletín de Noticias")
+        traduccion = self._guardar_instancia(self.traduccion_aleman)
+         print(f"Input: idioma = 'de', texto original = 'Boletín de Noticias'")
+        try:
+            mock_notificar.assert_called_once_with('boletin_traducido', traduccion)
+            self.assertEqual(texto_original, "News Bulletin")
+            print("Output esperado: notificar('boletin_traducido', traduccion) → Llamado correctamente")
+        except AssertionError as e:
+            print(f"Output inesperado: '{texto_original}' ≠ 'Nachrichtenbulletin'")
+            raise
+
+    
+    @patch('polls.signals.notificar')  
+    def test_traduccion_a_aleman_not_called(self, mock_notificar):
+        print("\n[TEST] test_traduccion_a_aleman_not_called")
+        print(f"Input: idioma = 'de', texto original = 'Boletín de Noticias'")
+        self._guardar_instancia(self.traduccion_ingles)
+        if not mock_notificar.called:
+            print("Output esperado: notificar() → No llamado")
+        else:
+            print("Output inesperado: notificar() fue llamado")
+            self.fail("notificar fue llamado cuando no debía")
+
+    
 
 
 if __name__ == '__main__':
