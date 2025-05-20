@@ -119,19 +119,6 @@ class TestSignals(unittest.TestCase):
             print("Output inesperado: notificar() fue llamado")
             self.fail("notificar fue llamado cuando no debía")
 
-    @patch('polls.signals.notificar')
-    def test_traduccion_a_aleman_called(self, mock_notificar):
-        print("\n[TEST] test_traduccion_a_aleman")
-        activate('de')
-        texto_original = _("Boletín de Noticias")
-        print(f"Input: idioma = 'de', texto original = 'Boletín de Noticias'")
-        try:
-            self.assertEqual(texto_original, "Nachrichtenbulletin")
-            print("Output esperado: 'Nachrichtenbulletin' → Traducción correcta")
-        except AssertionError as e:
-            print(f"Output inesperado: '{texto_original}' ≠ 'Nachrichtenbulletin'")
-            raise
-
      @patch('polls.signals.notificar')        
     def test_traduccion_a_aleman_called(self, mock_notificar):
        print("\n[TEST] test_traduccion_a_aleman")
@@ -141,7 +128,7 @@ class TestSignals(unittest.TestCase):
          print(f"Input: idioma = 'de', texto original = 'Boletín de Noticias'")
         try:
             mock_notificar.assert_called_once_with('boletin_traducido', traduccion)
-            self.assertEqual(texto_original, "News Bulletin")
+            self.assertEqual(texto_original, "Nachrichtenbulletin")
             print("Output esperado: notificar('boletin_traducido', traduccion) → Llamado correctamente")
         except AssertionError as e:
             print(f"Output inesperado: '{texto_original}' ≠ 'Nachrichtenbulletin'")
