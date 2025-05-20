@@ -3,6 +3,7 @@ from django.core.mail import send_mail
 from .models import Usuario
 
 def traducir_texto(texto, idioma_destino='en'):
+    print(texto)
     # Crear cliente de Google Translate
     client = translate.TranslationServiceClient()
 
@@ -19,12 +20,11 @@ def traducir_texto(texto, idioma_destino='en'):
             "parent": parent,
             "contents": [texto],
             "mime_type": "text/plain",  
-            "source_language_code": 'es',  
+            "source_language_code": 'en',  
             "target_language_code": idioma_destino  
         }
     )
-
-
+    print(response.translations[0].translated_text)
     return response.translations[0].translated_text
 
 #Logica de Correo
@@ -43,7 +43,7 @@ def notificar(evento, objeto):
         send_mail(
             asunto,
             mensaje,
-            'noreply@tuapp.com',
+            'noreply@Django.com',
             [usuario.email],
             fail_silently=False,
         )
