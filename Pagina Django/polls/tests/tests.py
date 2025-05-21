@@ -119,4 +119,5 @@ class TestSignals(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-#Para probar los test usar python manage.py test
+
+#Para ejecutar los tests, usar el tests.py que esta en la carpeta polls usando python manage.py test
