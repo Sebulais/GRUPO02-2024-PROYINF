@@ -16,5 +16,6 @@ urlpatterns = [
     path("", views.convocatorias, name="convocatorias"),
     path("", views.contacto, name="contacto"),
     path("", views.generarBoletines, name="generarBoletines"),
+    path("", views.textSpeech, name="textSpeech"),
 ]
 

@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.contrib.auth.views import LoginView, LogoutView
-from polls.views import home, index, boletines, noticias, programas, convocatorias, contacto, generarBoletines, chat_view
+from polls.views import home, index, boletines, noticias, programas, convocatorias, contacto, generarBoletines, chat_view, textSpeech
 
 
 urlpatterns = [
@@ -31,6 +31,7 @@ urlpatterns = [
     path('contacto/', contacto, name='contacto'),
     path('generarBoletines/', generarBoletines, name='generarBoletines'),
     path('api/chat/', chat_view, name='chat_view'),
+    path('textSpeech/', textSpeech, name='textSpeech'),
 
     
 ]

@@ -8,6 +8,7 @@ from django.views.decorators.csrf import csrf_exempt
 import os
 import google.generativeai as genai
 from .utils import traducir_texto
+from .utils import synthesize_text
 
 def home(request):
     contenido = {
@@ -70,7 +71,6 @@ def chat_view(request):
     return JsonResponse({"error": "Método no permitido."}, status=405)
 
 
-
 def index(request):
     return HttpResponse("Hello, world. You're at the polls index.")
 
@@ -94,3 +94,24 @@ def convocatorias(request):
 
 def contacto(request):
     return render(request, "contacto.html")
+
+def textSpeech(request):
+    import random
+    import string
+    
+    if request.method == "POST":
+        letters = string.ascii_lowercase
+
+        file_name = f"{''.join(random.choice(letters) for i in range(10))}.mp3"
+        dir = os.getcwd()+"/polls/static/sound_file"
+        full_dir = dir + "/"+file_name
+
+        text = request.POST['text']
+        lang = request.POST['lang']
+        
+        synthesize_text(full_dir,text,lang)
+        data = {"loc" :file_name}
+        
+        return render(request,'mostrarAudio.html',data)
+
+    return render(request, "textSpeech.html")
