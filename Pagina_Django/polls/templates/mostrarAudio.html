@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mostrar Audio</title>
+</head>
+<body>
+    {% block content %}
+    <section class="banner">
+        <div class="container">
+            <h1>Audio</h1>
+        </div>
+    </section>
+    <section>
+        <div class="text-container" style="width: 80%; margin:auto; margin-top: 30px; margin-bottom: 50px;">
+            <div style="margin-top: 30px; margin-bottom: 50px;" class="center">
+                <audio controls style="width: 80%;">
+                    <source src="/static/sound_file/{{loc}}" type="audio/ogg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+            <div class="col-auto">
+               <a class="btn btn-success" href="home.html">Salir</a>
+            </div>
+        </div>
+    </section>
+
+    {% endblock %}
+</body>
+</html>

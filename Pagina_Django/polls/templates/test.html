@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+
+<!doctype html>
+<html>
+
+<body>
+    {% block content %}
+
+
+    <!-- Banner -->
+    <section class="banner">
+        <div class="container">
+
+            <h1>Encuentra en la Fundación para la Innovación Agraria</h1>
+            <p>El apoyo que necesitas para innovar</p>
+        </div>
+    </section>
+
+    <!-- Barra de búsqueda -->
+    <div class="container mt-4" style="font-family: 'Roboto', sans-serif;">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="input-group input-group-lg">
+                    <input id="searchInput" type="text" class="form-control" placeholder="Buscar..." onkeyup="filterNews()">
+                    <button class="btn btn-light" type="button">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Agrega este enlace a Bootstrap Icons en el <head> de tu HTML -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+
+    <!-- Sección de noticias -->
+    <section class="news-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Noticias</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card news-item">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5opiAanGy6wk-GgPyFYdfpxPkvP5ExOo5nw&s" class="card-img-top"
+                            alt="Noticia 1">
+                        <div class="card-body">
+                            <h4 class="card-title">Plantas más eficientes gracias al trabajo de David Crazim</h4>
+                            <h5 class="card-subtle">Adaptación y Mitigación al Cambio Climático</h5>
+                            <p class="card-text">[05-11-2024] El agricultor y genetista David Crazim logró crear semillas de plantas que superan con creces el rendimiento de las comunes, logrando adaptarlas al cambio climático</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card news-item">
+                        <img src="https://img.freepik.com/fotos-premium/analisis-interacciones-alelopaticas-agricultura-generativa_1198295-127369.jpg"
+                            class="card-img-top" alt="Noticia 2">
+                        <div class="card-body">
+                            <h4 class="card-title">La nueva técnica del científico Alberto Whiskas para manejar el agua de riego</h4>
+                            <h5 class="card-subtle">Gestión Sostenible de Recursos Hídricos</h5>
+                            <p class="card-text">[07-11-2024] Se ha popularizado una nueva forma de reusar el agua de riego, ideada por el Dr. Alberto Whiskas</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card news-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/TomatalesEnRengo.jpg/1200px-TomatalesEnRengo.jpg"
+                            class="card-img-top" alt="Noticia 3">
+                        <div class="card-body">
+                            <h4 class="card-title">Umbrella, la empresa detrás del Jitomate y su sistema alimentario revolucionario</h4>
+                            <h5 class="card-subtle">Sistemas Alimentarios Sostenibles</h5>
+                            <p class="card-text">[08-11-2024] La empresa creada por Simpsero Humson, desvela las claves de su éxito y da consejos a nuevos emprendedores</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <style>
+        .news-item {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+    </style>
+    <script>
+        function filterNews() {
+            const searchQuery = document.getElementById('searchInput').value.toLowerCase(); 
+            console.log("Buscando:", searchQuery); 
+            const newsItems = document.querySelectorAll('.news-item'); 
+    
+            // Iteramos sobre cada noticia
+            newsItems.forEach(function(item) {
+                const title = item.querySelector('.card-title').textContent.toLowerCase();
+                const subcat = item.querySelector('.card-subtle').textContent.toLowerCase();
+                const summary = item.querySelector('.card-text').textContent.toLowerCase();
+    
+                
+                console.log("Titulo:", title, "Subcategoría:", subcat, "Resumen:", summary);
+    
+                
+                if (title.includes(searchQuery) || subcat.includes(searchQuery) || summary.includes(searchQuery)) {
+                    item.style.visibility = 'visible'; 
+                    item.style.opacity = 1; 
+                } else {
+                    item.style.visibility = 'hidden'; 
+                    item.style.opacity = 0; 
+                }
+            });
+        }
+    </script>
+
+    <!-- Agregar Bootstrap JS (si no lo tienes ya) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    {% endblock %}
+</body>
+
+</html>

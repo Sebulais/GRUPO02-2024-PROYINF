@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Gemini</title>
+</head>
+<body>
+    {% block content %}
+    <section class="banner">
+        <div class="container">
+            <h1>Chat con Gemini</h1>
+        </div>
+    </section>
+    <section>
+        <div class="chat-container">
+            <div id="messages"></div>
+            <input type="text" id="user-input" placeholder="Escribe tu mensaje aquí..." onkeydown="handleKeyDown(event)">
+            <button onclick="sendMessage()">Enviar</button>
+        </div>
+    </section>
+    <script>
+        async function sendMessage() {
+            const userMessage = document.getElementById("user-input").value.trim();
+            if (!userMessage) return;
+
+            // Agregar mensaje del usuario
+            const messagesContainer = document.getElementById("messages");
+            messagesContainer.innerHTML += `<div><b>Usuario:</b> ${userMessage}</div>`;
+            document.getElementById("user-input").value = "";
+
+            try {
+                // Enviar al backend
+                const response = await fetch("/api/chat/", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ message: userMessage })
+                });
+
+                if (!response.ok) throw new Error("Error en el servidor.");
+
+                const data = await response.json();
+                const botReply = data.reply || "Sin respuesta.";
+                messagesContainer.innerHTML += `<div><b>IA:</b> ${botReply}</div>`;
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            } catch (error) {
+                messagesContainer.innerHTML += `<div>Error: ${error.message}</div>`;
+            }
+        }
+
+        function handleKeyDown(event) {
+            if (event.key === "Enter") sendMessage();
+        }
+    </script>
+    {% endblock %}
+</body>
+</html>
