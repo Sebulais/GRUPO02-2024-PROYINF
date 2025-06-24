@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load i18n %}
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -10,24 +12,24 @@
     {% block content %}
     <section class="banner">
         <div class="container">
-            <h1>Chat con Gemini</h1>
+            <h1>{% translate "Chat con Gemini" %}</h1>
         </div>
     </section>
     <section>
         <div class="chat-container">
             <div id="messages"></div>
             <input type="text" id="user-input" placeholder="Escribe tu mensaje aquí..." onkeydown="handleKeyDown(event)">
-            <button onclick="sendMessage()">Enviar</button>
+            <button onclick="sendMessage()">{% translate "Enviar" %}</button>
         </div>
     </section>
-    <script>
+    <script src="{% url 'javascript-catalog' %}">
         async function sendMessage() {
             const userMessage = document.getElementById("user-input").value.trim();
             if (!userMessage) return;
 
             // Agregar mensaje del usuario
             const messagesContainer = document.getElementById("messages");
-            messagesContainer.innerHTML += `<div><b>Usuario:</b> ${userMessage}</div>`;
+            messagesContainer.innerHTML += `<div><b>{% translate "Usuario:" %}</b> ${userMessage}</div>`;
             document.getElementById("user-input").value = "";
 
             try {

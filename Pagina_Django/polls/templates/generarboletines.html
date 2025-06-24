@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 <!doctype html>
 <html>
@@ -21,7 +22,7 @@
     <section class="banner">
         <div class="container">
 
-            <h1>Generar Boletin de Vigilancia e Inteligencia en Innovación</h1>
+            <h1>{% translate  "Generar Boletín de Vigilancia e Inteligencia en Innovación" %}</h1>
 
         </div>
     </section>
@@ -30,35 +31,35 @@
     <section class="news-section py-5">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <h2 class="text-left mb-5" style="font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 1.4em; border-bottom: 1px solid #c0c0c0; padding-bottom: 10px;">Generar Boletin VigiFIA</h2>
+                <h2 class="text-left mb-5" style="font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 1.4em; border-bottom: 1px solid #c0c0c0; padding-bottom: 10px;">{% translate "Generar Boletín VigiFIA" %}</h2>
                 <div class="container mt-5">
                     <div class="row justify-content">
                         <div class="col-md">
                             <div class="card">
                                 <div class="card-header" style="font-family: 'Roboto', sans-serif;">
-                                    Generar Boletin
+                                    {% translate "Generar Boletín" %}
                                 </div>
                                 <form class="p-4" method="POST" action="model/execute_editarReserva.php">
                                     <div class="mb-3">
-                                        <label for="titulo" class="form-label" style="font-family: 'Roboto', sans-serif;">Título</label>
+                                        <label for="titulo" class="form-label" style="font-family: 'Roboto', sans-serif;">{% translate "Título" %}</label>
                                         <input type="text" class="form-control" id="titulo" name="titulo" required value="{{ reserva.Rut }}" readonly>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="fuente" class="form-label" style="font-family: 'Roboto', sans-serif;">Fuente de la noticia</label>
+                                        <label for="fuente" class="form-label" style="font-family: 'Roboto', sans-serif;">{% translate "Fuente de la noticia" %}</label>
                                         <input type="text" class="form-control" id="fuente" name="fuente" required value="{{ reserva.Rut }}" readonly>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="categoria" class="form-label" style="font-family: 'Roboto', sans-serif;">Categoría</label>
+                                        <label for="categoria" class="form-label" style="font-family: 'Roboto', sans-serif;">{% translate "Categoría" %}</label>
                                         <select class="form-select" id="categoria" name="categoria" required>
-                                            <option value="Adaptación y Mitigación al Cambio Climático">Adaptación y Mitigación al Cambio Climático</option>
-                                            <option value="Gestión Sostenible de Recursos Hídricos">Gestión Sostenible de Recursos Hídricos</option>
-                                            <option value="Sistemas Alimentarios Sostenibles">Sistemas Alimentarios Sostenibles</option>
+                                            <option value="Adaptación y Mitigación al Cambio Climático">{% translate "Adaptación y Mitigación al Cambio Climático" %}</option>
+                                            <option value="Gestión Sostenible de Recursos Hídricos">{% translate "Gestión Sostenible de Recursos Hídricos" %}</option>
+                                            <option value="Sistemas Alimentarios Sostenibles">{% translate "Sistemas Alimentarios Sostenibles" %}</option>
                                         </select>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="tours" class="form-label" style="font-family: 'Roboto', sans-serif;">Archivo de la noticia</label>
+                                        <label for="tours" class="form-label" style="font-family: 'Roboto', sans-serif;">{% translate "Archivo de la noticia" %}</label>
                                         <input type="file" class="form-control" id="tours" name="tours[]" required multiple>
-                                        <span id="file-names" class="text-muted mt-2 d-block" style="font-family: 'Roboto', sans-serif;">No hay archivos seleccionados.</span>
+                                        <span id="file-names" class="text-muted mt-2 d-block" style="font-family: 'Roboto', sans-serif;">{% translate "No hay archivos seleccionados." %}</span>
                                     </div>
                                     
                                     <script>
@@ -78,7 +79,7 @@
                                     
                                     <div class="d-grid">
                                         <input type="hidden" name="Num_Habitacion" value="{{ reserva.Num_Habitacion }}">
-                                        <button type="submit" class="btn btn-primary" style="background-color: #489956; font-family: 'Roboto', sans-serif;">Generar</button>
+                                        <button type="submit" class="btn btn-primary" style="background-color: #489956; font-family: 'Roboto', sans-serif;">{% translate "Generar" %}</button>
                                     </div>    
                                 </form> 
                             </div>

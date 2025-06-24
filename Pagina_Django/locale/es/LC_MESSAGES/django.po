@@ -1,0 +1,315 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-06-23 23:15-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? "
+"1 : 2;\n"
+
+#: .\polls\templates\base.html:259
+msgid "Inicio"
+msgstr ""
+
+#: .\polls\templates\base.html:262
+msgid "Boletines"
+msgstr ""
+
+#: .\polls\templates\base.html:265
+msgid "Generar Boletines"
+msgstr ""
+
+#: .\polls\templates\base.html:268
+msgid "Contactar con la IA"
+msgstr ""
+
+#: .\polls\templates\base.html:272
+msgid "Herramientas"
+msgstr ""
+
+#: .\polls\templates\base.html:278
+msgid "Texto a Voz"
+msgstr ""
+
+#: .\polls\templates\base.html:281
+msgid "Translate"
+msgstr ""
+
+#: .\polls\templates\base.html:292 .\web_project\settings.py:123
+msgid "Inglés"
+msgstr ""
+
+#: .\polls\templates\base.html:293 .\web_project\settings.py:122
+msgid "Español"
+msgstr ""
+
+#: .\polls\templates\base.html:294
+msgid "Francés"
+msgstr ""
+
+#: .\polls\templates\base.html:295 .\web_project\settings.py:125
+msgid "Alemán"
+msgstr ""
+
+#: .\polls\templates\base.html:306
+msgid "Iniciar Sesión"
+msgstr ""
+
+#: .\polls\templates\base.html:330
+msgid "SITIOS DE INTERÉS"
+msgstr ""
+
+#: .\polls\templates\base.html:331
+msgid "Ministerio de Agricultura"
+msgstr ""
+
+#: .\polls\templates\base.html:338
+msgid "Licitaciones de proveedores"
+msgstr ""
+
+#: .\polls\templates\base.html:339
+msgid "Gobierno Transparente"
+msgstr ""
+
+#: .\polls\templates\base.html:340
+msgid "Solicitudes de Transparencia"
+msgstr ""
+
+#: .\polls\templates\base.html:343
+msgid "CONTACTO"
+msgstr ""
+
+#: .\polls\templates\base.html:345
+msgid "Télefono"
+msgstr ""
+
+#: .\polls\templates\base.html:349
+msgid "REDES SOCIALES"
+msgstr ""
+
+#: .\polls\templates\base.html:378
+msgid "Fundación para la Innovación Agraria. Todos los derechos reservados."
+msgstr ""
+
+#: .\polls\templates\chat.html:15
+msgid "Chat con Gemini"
+msgstr ""
+
+#: .\polls\templates\chat.html:22 .\polls\templates\contacto.html:47
+msgid "Enviar"
+msgstr ""
+
+#: .\polls\templates\chat.html:32
+msgid "Usuario:"
+msgstr ""
+
+#: .\polls\templates\contacto.html:32
+msgid "Chat de Retroalimentación con la IA"
+msgstr ""
+
+#: .\polls\templates\contacto.html:43
+msgid "¡Hola! Soy un chatbot de retroalimentación. ¿En qué puedo ayudarte hoy?"
+msgstr ""
+
+#: .\polls\templates\generarboletines.html:25
+msgid "Generar Boletín de Vigilancia e Inteligencia en Innovación"
+msgstr ""
+
+#: .\polls\templates\generarboletines.html:34
+msgid "Generar Boletín VigiFIA"
+msgstr ""
+
+#: .\polls\templates\generarboletines.html:40
+msgid "Generar Boletín"
+msgstr ""
+
+#: .\polls\templates\generarboletines.html:44
+msgid "Título"
+msgstr ""
+
+#: .\polls\templates\generarboletines.html:48
+msgid "Fuente de la noticia"
+msgstr ""
+
+#: .\polls\templates\generarboletines.html:52
+msgid "Categoría"
+msgstr ""
+
+#: .\polls\templates\generarboletines.html:54 .\polls\templates\test.html:51
+msgid "Adaptación y Mitigación al Cambio Climático"
+msgstr ""
+
+#: .\polls\templates\generarboletines.html:55 .\polls\templates\test.html:62
+msgid "Gestión Sostenible de Recursos Hídricos"
+msgstr ""
+
+#: .\polls\templates\generarboletines.html:56 .\polls\templates\test.html:73
+msgid "Sistemas Alimentarios Sostenibles"
+msgstr ""
+
+#: .\polls\templates\generarboletines.html:60
+msgid "Archivo de la noticia"
+msgstr ""
+
+#: .\polls\templates\generarboletines.html:62
+msgid "No hay archivos seleccionados."
+msgstr ""
+
+#: .\polls\templates\generarboletines.html:82
+msgid "Generar"
+msgstr ""
+
+#: .\polls\templates\home.html:8
+msgid "Local Library"
+msgstr ""
+
+#: .\polls\templates\mostrarAudio.html:9
+msgid "Mostrar Audio"
+msgstr ""
+
+#: .\polls\templates\mostrarAudio.html:15
+msgid "Audio"
+msgstr ""
+
+#: .\polls\templates\mostrarAudio.html:23
+msgid "Elemento de audio no soportado."
+msgstr ""
+
+#: .\polls\templates\mostrarAudio.html:27
+msgid "Salir"
+msgstr ""
+
+#: .\polls\templates\test.html:15
+msgid "Encuentra en la Fundación para la Innovación Agraria"
+msgstr ""
+
+#: .\polls\templates\test.html:16
+msgid "El apoyo que necesitas para innovar"
+msgstr ""
+
+#: .\polls\templates\test.html:26
+msgid "Buscar ..."
+msgstr ""
+
+#: .\polls\templates\test.html:43
+msgid "Noticias"
+msgstr ""
+
+#: .\polls\templates\test.html:50
+msgid "Plantas más eficientes gracias al trabajo de David Crazim"
+msgstr ""
+
+#: .\polls\templates\test.html:52
+msgid ""
+"El agricultor y genetista David Crazim logró crear semillas de plantas que "
+"superan con creces el rendimiento de las comunes, logrando adaptarlas al "
+"cambio climático"
+msgstr ""
+
+#: .\polls\templates\test.html:61
+msgid ""
+"La nueva técnica del científico Alberto Whiskas para manejar el agua de riego"
+msgstr ""
+
+#: .\polls\templates\test.html:63
+msgid ""
+"Se ha popularizado una nueva forma de reusar el agua de riego, ideada por el "
+"Dr. Alberto Whiskas"
+msgstr ""
+
+#: .\polls\templates\test.html:72
+msgid ""
+"Umbrella, la empresa detrás del Jitomate y su sistema alimentario "
+"revolucionario"
+msgstr ""
+
+#: .\polls\templates\test.html:74
+msgid ""
+"La empresa creada por Simpsero Humson, desvela las claves de su éxito y da "
+"consejos a nuevos emprendedores"
+msgstr ""
+
+#: .\polls\templates\textSpeech.html:9 .\polls\templates\textSpeech.html:15
+msgid "De Texto a Voz"
+msgstr ""
+
+#: .\polls\templates\textSpeech.html:22
+msgid "Idioma del texto / voz"
+msgstr ""
+
+#: .\polls\templates\textSpeech.html:24
+msgid "Inglés (Australia)"
+msgstr ""
+
+#: .\polls\templates\textSpeech.html:25
+msgid "Inglés (Reino Unido)"
+msgstr ""
+
+#: .\polls\templates\textSpeech.html:26
+msgid "Inglés (EE.UU.)"
+msgstr ""
+
+#: .\polls\templates\textSpeech.html:27
+msgid "Francés (Canadá)"
+msgstr ""
+
+#: .\polls\templates\textSpeech.html:28
+msgid "Francés (Francia)"
+msgstr ""
+
+#: .\polls\templates\textSpeech.html:29
+msgid "Alemán (Alemania)"
+msgstr ""
+
+#: .\polls\templates\textSpeech.html:30
+msgid "Español (España)"
+msgstr ""
+
+#: .\polls\templates\textSpeech.html:31
+msgid "Español (EE.UU.)"
+msgstr ""
+
+#: .\polls\templates\textSpeech.html:35
+msgid "Escriba el texto que quiera escuchar..."
+msgstr ""
+
+#: .\polls\templates\textSpeech.html:40
+msgid "Generando Audio"
+msgstr ""
+
+#: .\polls\templates\translate.html:6
+msgid "¿Qué deseas traducir?"
+msgstr ""
+
+#: .\polls\templates\translate.html:10
+msgid "Escribe el texto aquí..."
+msgstr ""
+
+#: .\polls\templates\translate.html:13
+msgid "Traducir"
+msgstr ""
+
+#: .\polls\templates\translate.html:18
+msgid "Traducción:"
+msgstr ""
+
+#: .\polls\tests.py:97 .\polls\tests.py:109 .\polls\tests\tests.py:97
+#: .\polls\tests\tests.py:109
+msgid "Boletín de Noticias"
+msgstr ""
+
+#: .\web_project\settings.py:124
+msgid "Frances"
+msgstr ""

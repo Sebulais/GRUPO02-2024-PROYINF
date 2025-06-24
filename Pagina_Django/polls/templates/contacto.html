@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load i18n %}
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -27,7 +29,7 @@
     </style>
     <section class="banner">
         <div class="container">
-            <h1>Chat de Retroalimentación con la IA</h1>
+            <h1>{% translate "Chat de Retroalimentación con la IA" %}</h1>
         </div>
     </section>
 
@@ -38,11 +40,11 @@
                     <div class="chat-container" id="chat-container">
                         <div class="chat-box" id="messages">
                             <!-- Aquí se mostrarán los mensajes -->
-                            <p id="responseText" class="message bot">¡Hola! Soy un chatbot de retroalimentación. ¿En qué puedo ayudarte hoy?</p>
+                            <p id="responseText" class="message bot">{% translate "¡Hola! Soy un chatbot de retroalimentación. ¿En qué puedo ayudarte hoy?" %}</p>
                         </div>
                         <div class="chat-input">
                             <input type="text" id="inputText" placeholder="Escribe tu pregunta aquí..." onkeydown="handleKeyDown(event)" />
-                            <button class="send-button" id="generateButton" onclick="sendMessage()">Enviar</button>
+                            <button class="send-button" id="generateButton" onclick="sendMessage()">{% translate "Enviar" %}</button>
                         </div>
                     </div>
                 </div>
@@ -57,7 +59,7 @@
           }
         }
     </script>
-    <script type="module">
+    <script type="module" src="{% url 'javascript-catalog' %}">
         import { GoogleGenerativeAI } from "@google/generative-ai";
 
         // Reemplaza 'YOUR_API_KEY' con tu clave de API real
@@ -85,7 +87,7 @@
 
             // Verificar si el mensaje contiene palabras prohibidas
             if (containsForbiddenWords(userMessage)) {
-                alert("Tu mensaje contiene palabras no permitidas. Por favor, intenta nuevamente.");
+                alert(gettext("Tu mensaje contiene palabras no permitidas. Por favor, intenta nuevamente."));
                 inputElement.value = ''; // Limpiar el campo de entrada
                 return;
             }
@@ -113,12 +115,12 @@
                 messagesContainer.appendChild(botMessageElement);
 
             } catch (error) {
-                console.error('Error al generar contenido:', error);
+                console.error(gettext('Error al generar contenido:'), error);
 
                 // Agrega un mensaje de error al chat
                 const errorMessageElement = document.createElement('p');
                 errorMessageElement.classList.add('message', 'bot');
-                errorMessageElement.textContent = "Hubo un error al procesar tu mensaje. Intenta nuevamente.";
+                errorMessageElement.textContent = gettext("Hubo un error al procesar tu mensaje. Intenta nuevamente.");
                 messagesContainer.appendChild(errorMessageElement);
             }
 

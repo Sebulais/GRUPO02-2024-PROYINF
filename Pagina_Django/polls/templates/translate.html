@@ -1,19 +1,21 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block content %}
   <div class="container mt-4">
-    <h2>¿Qué deseas traducir?</h2>
+    <h2>{% translate "¿Qué deseas traducir?" %}</h2>
     <form method="post" action="{% url 'translate' %}">
       {% csrf_token %}
       <div class="mb-3">
-        <textarea name="texto_a_traducir" class="form-control" rows="4" placeholder="Escribe el texto aquí...">{{ texto_original|default:"" }}</textarea>
+        {% translate "Escribe el texto aquí..." as escribir_texto %}
+        <textarea name="texto_a_traducir" class="form-control" rows="4" placeholder="{{ escribir_texto }}">{{ texto_original|default:"" }}</textarea>
       </div>
-      <button type="submit" class="btn btn-primary">Traducir</button>
+      <button type="submit" class="btn btn-primary">{% translate "Traducir" %}</button>
     </form>
 
     {% if texto_traducido %}
       <hr>
-      <h4>Traducción:</h4>
+      <h4>{% translate "Traducción:" %}</h4>
       <p>{{ texto_traducido }}</p>
     {% endif %}
   </div>

@@ -1,16 +1,18 @@
 {% extends 'base.html' %}
+{% load i18n %}
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mostrar Audio</title>
+    <title>{% translate "Mostrar Audio" %}</title>
 </head>
 <body>
     {% block content %}
     <section class="banner">
         <div class="container">
-            <h1>Audio</h1>
+            <h1>{% translate "Audio" %}</h1>
         </div>
     </section>
     <section>
@@ -18,11 +20,11 @@
             <div style="margin-top: 30px; margin-bottom: 50px;" class="center">
                 <audio controls style="width: 80%;">
                     <source src="/static/sound_file/{{loc}}" type="audio/ogg">
-                    Your browser does not support the audio element.
+                    {% translate "Elemento de audio no soportado." %}
                 </audio>
             </div>
             <div class="col-auto">
-               <a class="btn btn-success" href="home.html">Salir</a>
+               <a class="btn btn-success" href="home.html">{% translate "Salir" %}</a>
             </div>
         </div>
     </section>
