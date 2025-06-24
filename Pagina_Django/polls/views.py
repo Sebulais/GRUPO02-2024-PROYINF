@@ -82,6 +82,7 @@ def convocatorias(request):
 def contacto(request):
     return render(request, "contacto.html")
 
+
 def home(request):
     return render(request, "test.html")
 
