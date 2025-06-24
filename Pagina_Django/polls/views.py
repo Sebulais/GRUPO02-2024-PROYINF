@@ -31,7 +31,8 @@ model = genai.GenerativeModel(
 
 history = []  # Historial de la conversación
 
-@csrf_exempt  # Exime la verificación de CSRF para facilitar pruebas locales
+@csrf_exempt
+@require_GET  # Exime la verificación de CSRF para facilitar pruebas locales
 def chat_view(request):
     if request.method == "POST":
         try:
