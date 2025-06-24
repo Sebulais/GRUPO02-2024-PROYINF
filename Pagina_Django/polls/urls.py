@@ -4,6 +4,7 @@ from django.conf.urls.static import static
 from . import views
 from django.urls import path
 from .views import chat_ia, translate
+from .views import CrearInformacionCientifica
 urlpatterns = [
     path("api/chat/", views.chat_ia, name="chat_ia"),
     path("contacto/", chat_ia, name="contacto"),
@@ -18,5 +19,6 @@ urlpatterns = [
     path("", views.generarBoletines, name="generarBoletines"),
     path("", views.textSpeech, name="textSpeech"),
     path("",views.translate, name="translate"),
+    path('', CrearInformacionCientifica.as_view(), name="informacion"),
 ]
 

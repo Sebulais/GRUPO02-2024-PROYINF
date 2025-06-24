@@ -11,6 +11,12 @@ from .utils import traducir_textos
 from .utils import synthesize_text
 from django.views.decorators.http import require_GET
 
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from .models import InformacionCientifica
+from .serializers import InformacionCientificaSerializer
+
 
 # Configurar la API de Google Generative AI
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
@@ -132,3 +138,17 @@ def translate(request):
         "texto_original": texto_original,
         "texto_traducido": texto_traducido,
     })
+
+
+class CrearInformacionCientifica(APIView):
+    def post(self, request):
+        print("POST recibido con data:", request.data)
+        serializer = InformacionCientificaSerializer(data=request.data)
+        if serializer.is_valid():
+            print("Serializer válido, guardando...")
+            serializer.save()  # Esto debe disparar la señal
+            print("Guardado exitoso")
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            print("Serializer inválido:", serializer.errors)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
