@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <title>{% block title %}Default Title{% endblock %}</title>
 </head>
 <body>
     {% block content %}
@@ -63,7 +64,7 @@
         import { GoogleGenerativeAI } from "@google/generative-ai";
 
         // Reemplaza 'YOUR_API_KEY' con tu clave de API real
-        const API_KEY = '';
+        const API_KEY = 'AIzaSyDKxJQqD_FwpLN5h_bf0ucW19k247pU0jI';
         const genAI = new GoogleGenerativeAI(API_KEY);
 
         // Lista de palabras prohibidas
