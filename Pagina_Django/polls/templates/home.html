@@ -3,7 +3,7 @@
 
 <!doctype html>
 <html lang="en">
-  <title>
+  <title>{% block title %}Default Title{% endblock %}</title>
   <head></head>
     {% block title %}
       <title>{% translate "Local Library" %}</title>
@@ -26,5 +26,4 @@
     {% endblock %}
 
   </body>
-  </title>
 </html>
