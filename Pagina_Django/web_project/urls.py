@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth.views import LoginView, LogoutView
-from polls.views import home, index, boletines, noticias, programas, convocatorias, contacto, generarBoletines, chat_view, textSpeech, translate
+from polls.views import home, index, boletines, noticias, programas, convocatorias, contacto, generarBoletines, chat_view, textSpeech, translate, CrearInformacionCientifica
 from django.views.i18n import JavaScriptCatalog
 
 urlpatterns = [
@@ -35,5 +35,6 @@ urlpatterns = [
     path("translate/", translate, name="translate"),
     path("jsi18n/", JavaScriptCatalog.as_view(), name="javascript-catalog"),
     path("i18n/", include("django.conf.urls.i18n")),
+    path("api/informacion-cientifica/", CrearInformacionCientifica.as_view(), name="informacion"),
     
 ]
