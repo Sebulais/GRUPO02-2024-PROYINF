@@ -38,7 +38,7 @@ model = genai.GenerativeModel(
 history = []  # Historial de la conversación
 
 @csrf_exempt
-  # Exime la verificación de CSRF para facilitar pruebas locales
+@require_GET  # Exime la verificación de CSRF para facilitar pruebas locales
 def chat_view(request):
     if request.method == "POST":
         try:
@@ -62,46 +62,46 @@ def chat_view(request):
             return JsonResponse({"error": str(e)}, status=500)
     return JsonResponse({"error": "Método no permitido."}, status=405)
 
-
+@require_GET
 def index(request):
     return HttpResponse("Hello, world. You're at the polls index.")
 
-
+@require_GET
 def get_idioma_navegador(request):
     aceptado = request.META.get('HTTP_ACCEPT_LANGUAGE', '')
     if aceptado:
         return aceptado.split(',')[0][:2]
     return 'en'
 
-
+@require_GET
 def noticias(request):
     return render(request, "home.html")
 
-
+@require_GET
 def boletines(request):
     return render(request, "boletines.html")
 
-
+@require_GET
 def generarBoletines(request):
     return render(request, "generarBoletines.html")
 
-
+@require_GET
 def programas(request):
     return HttpResponse("Esto fue un accidente de pancha")
 
-
+@require_GET
 def convocatorias(request):
     return HttpResponse("Inserten meme")
 
-
+@require_GET
 def contacto(request):
     return render(request, "contacto.html")
 
-
+@require_GET
 def home(request):
     return render(request, "test.html")
 
-
+@require_GET
 def textSpeech(request):
     import random
     import string
@@ -123,7 +123,7 @@ def textSpeech(request):
 
     return render(request, "textSpeech.html")
 
-
+@require_GET
 def translate(request):
     texto_original = ""
     texto_traducido = ""
