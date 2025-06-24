@@ -4,7 +4,9 @@
 <!doctype html>
 <html lang="en">
   <title>{% block title %}Default Title{% endblock %}</title>
-  <head></head>
+  <head>
+    <title>{% block title %}Default Title{% endblock %}</title>
+  </head>
     {% block title %}
       <title>{% translate "Local Library" %}</title>
     {% endblock %}
